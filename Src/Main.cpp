@@ -363,16 +363,8 @@ int main(int argc, char* argv[])
     string definition_file_name = string(argv[1]) + ".def";
     string input_string_file_name = string(argv[1]) + ".str";
 
-    try
-    {
-        Turing_Machine tm(definition_file_name);
-    }
-    catch(Crash& ec)
-    {
-        cout << red_start << ec.what() << color_reset;
-        exit(0);
-    }
-
+    Turing_Machine tm(definition_file_name);
+   
     bool str_list_modified = false;
     vector<string> input_strings = load_input_strings(input_string_file_name, tm, str_list_modified); // load input strings
 

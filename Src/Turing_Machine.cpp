@@ -26,7 +26,10 @@ Turing_Machine::Turing_Machine(const string& definition_file_name)
 
     definition.open(definition_file_name);
     if(!definition.is_open())
-        throw Crash("Could not open: " + definition_file_name);
+    {
+        cout << "Could not open: " + definition_file_name << endl;
+        exit(0);
+    }
 
     string value;
     string first_keyword("STATES:");
