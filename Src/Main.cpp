@@ -200,7 +200,7 @@ int handle_user_command(char cmd_char, Turing_Machine& TM,
         }
         catch(Crash& ec)
         {
-            cout << yellow_start << ec.what() << color_reset;
+            cout << red_start << ec.what() << color_reset;
         }
 
         TM.view_instantaneous_descriptions(num_cells_in_id);
@@ -363,7 +363,14 @@ int main(int argc, char* argv[])
     string definition_file_name = string(argv[1]) + ".def";
     string input_string_file_name = string(argv[1]) + ".str";
 
-    Turing_Machine tm(definition_file_name);
+    try
+    {
+        Turing_Machine tm(definition_file_name);
+    }
+    catch(Crash& ec)
+    {
+        cout << red_start << ec.what() << color_reset;
+    }
 
     bool str_list_modified = false;
     vector<string> input_strings = load_input_strings(input_string_file_name, tm, str_list_modified); // load input strings
