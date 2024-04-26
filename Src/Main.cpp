@@ -370,6 +370,7 @@ int main(int argc, char* argv[])
     catch(Crash& ec)
     {
         cout << red_start << ec.what() << color_reset;
+        exit(0);
     }
 
     bool str_list_modified = false;
